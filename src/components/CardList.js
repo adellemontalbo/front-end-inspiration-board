@@ -3,7 +3,7 @@ import Card from "./Card";
 
 const CardList = (props) => {
   return (
-    <>
+    <div>
       {props.cardsData.map((card) => (
         <Card
           id={card.id}
@@ -12,7 +12,7 @@ const CardList = (props) => {
           key={card.id}
         />
       ))}
-    </>
+    </div>
   );
 };
 

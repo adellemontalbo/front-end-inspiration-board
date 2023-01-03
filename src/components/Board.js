@@ -1,9 +1,18 @@
 import PropTypes from "prop-types";
 
 const Board = (props) => {
-  return <>WIP</>;
+  
+  return (
+    <li>
+   {props.title}
+   </li>  
+  );
 };
 
-Board.propTypes = {};
+Board.propTypes = {
+  id: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  owner: PropTypes.string.isRequired,
+};
 
 export default Board;

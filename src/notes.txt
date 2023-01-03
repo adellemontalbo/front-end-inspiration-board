@@ -1,0 +1,1 @@
+1) Should we pass down all the properties to board from boardlist if we only need title?
