@@ -2,25 +2,25 @@ import PropTypes from "prop-types";
 import Board from "./Board";
 
 const BoardList = (props) => {
-        return (
-          <>
-            <h2>All Boards</h2>
-            <ul>
-              {props.boardData.map((board) => (
-                <Board
-                  title={board.title}
-                />
-              ))}
-            </ul>
-          </>
-        );
-      };
-
+  return (
+    <>
+      <h2>All Boards</h2>
+      <ul>
+        {props.boardsData.map((board) => (
+          <Board id={board.id} title={board.title} />
+        ))}
+      </ul>
+    </>
+  );
+};
 
 BoardList.propTypes = {
-    boardData: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string.isRequired
-})),
+  boardsData: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+    })
+  ),
 };
 
 export default BoardList;
