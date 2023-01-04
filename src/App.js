@@ -38,7 +38,18 @@ const EXAMPLE_BOARD_LIST = [EXAMPLE_BOARD_1, EXAMPLE_BOARD_2];
 const CARDS_ONLY = EXAMPLE_BOARD_1.cards;
 
 function App() {
+
   const [boardsData, setBoardsData] = useState(EXAMPLE_BOARD_LIST);
+  const [currentBoard, setCurrentBoard] = useState({
+    title: "test title",
+    owner: "test owner",
+    id: null
+  });
+
+  const selectBoard = (board) => { 
+    const newBoard = {...board}
+    setCurrentBoard(newBoard) };
+
 
   const addBoardData = (newBoard) => {
     const newBoardsList = [...boardsData];
@@ -49,7 +60,6 @@ function App() {
     });
 
     setBoardsData(newBoardsList);
-    console.log({ boardsData });
   };
 
   return (
@@ -57,10 +67,10 @@ function App() {
       <h1>Inspiration Board</h1>
       <section className="sidebar">
         <BoardForm addBoardData={addBoardData} />
-        <BoardList boardsData={EXAMPLE_BOARD_LIST} />
+        <BoardList boardsData={boardsData} onSelectBoard={selectBoard}/>
       </section>
       <section>
-        <h2>BoardName and BoardOwner</h2>
+        <h2>{currentBoard.title}{currentBoard.owner}</h2>
         <h2>Add New Card</h2>
         {/* <CardForm /> */}
         <div className="cardDisplay">

@@ -1,13 +1,14 @@
 import PropTypes from "prop-types";
 import Board from "./Board";
 
-const BoardList = (props) => {
+const BoardList = ({boardsData, onSelectBoard}) => {
+  // console.log(props)
   return (
     <>
       <h2>All Boards</h2>
       <ul>
-        {props.boardsData.map((board) => (
-          <Board key={board.id} id={board.id} title={board.title} />
+        {boardsData.map((board) => (
+          <li key={board.id}> <Board id={board.id} title={board.title} onSelectBoard={onSelectBoard} owner={board.owner}/></li>
         ))}
       </ul>
     </>
@@ -21,6 +22,7 @@ BoardList.propTypes = {
       title: PropTypes.string.isRequired,
     })
   ),
+  onSelectBoard: PropTypes.func.isRequired
 };
 
 export default BoardList;

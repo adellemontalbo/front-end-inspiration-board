@@ -61,7 +61,7 @@ const BoardForm = (props) => {
               : ""
           }
         ></input>
-        <input type="submit" value="Create new board" />
+        <input type="submit" value="Submit" />
       </form>
     </>
   );
