@@ -47,7 +47,8 @@ function App() {
   });
 
   const selectBoard = (board) => { 
-    const newBoard = {...board}
+    const newBoard = {title: board.title,
+    owner: board.owner, id:board.id};
     setCurrentBoard(newBoard) };
 
 

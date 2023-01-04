@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
 
-const Board = (props) => {
+const Board = ({ id, title, owner, onSelectBoard}) => {
   // const onSelectBoardClick = () => 
-  console.log(props)
-  return (<div onClick={() => props.onSelectBoard(props.board)}>{props.title}</div>);
+  console.log()
+  return (<div onClick={() => onSelectBoard(board)}>{title}</div>);
 };
 
 
