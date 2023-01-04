@@ -8,6 +8,8 @@ const Card = ({ id, message, likesCount }) => {
         <li>
           <p>{likesCount} 🫀</p>
         </li>
+        <li>+1</li>
+        <li>Delete</li>
         {/* <li><p onClick={() => props.plusOneCardItem(card)}>+1</p></li> */}
         {/* <li><p className='card-delete' onClick={() => props.deleteCardItem(props.card)}>Delete</p></li> */}
       </ul>

@@ -9,7 +9,6 @@ const CardList = (props) => {
           id={card.id}
           likesCount={card.likesCount}
           message={card.message}
-          key={card.id}
         />
       ))}
     </div>
