@@ -1,9 +1,9 @@
+import { useState } from "react";
 import "./App.css";
 import CardList from "./components/CardList";
 import CardForm from "./components/CardForm";
 import BoardForm from "./components/BoardForm";
 import BoardList from "./components/BoardList";
-import Card from "./components/Card";
 
 const EXAMPLE_CARD_1 = {
   id: 1,
@@ -38,18 +38,32 @@ const EXAMPLE_BOARD_LIST = [EXAMPLE_BOARD_1, EXAMPLE_BOARD_2];
 const CARDS_ONLY = EXAMPLE_BOARD_1.cards;
 
 function App() {
+  const [boardsData, setBoardsData] = useState(EXAMPLE_BOARD_LIST);
+
+  const addBoardData = (newBoard) => {
+    const newBoardsList = [...boardsData];
+
+    newBoardsList.push({
+      titleData: newBoard.titleData,
+      ownerData: newBoard.ownerData,
+    });
+
+    setBoardsData(newBoardsList);
+    console.log({ boardsData });
+  };
+
   return (
     <div className="App">
       <h1>Inspiration Board</h1>
-      <section classname="sidebar">
-        {/* <BoardForm /> */}
+      <section className="sidebar">
+        <BoardForm addBoardData={addBoardData} />
         <BoardList boardsData={EXAMPLE_BOARD_LIST} />
       </section>
       <section>
         <h2>BoardName and BoardOwner</h2>
         <h2>Add New Card</h2>
         {/* <CardForm /> */}
-        <div classname="cardDisplay">
+        <div className="cardDisplay">
           <CardList cardsData={CARDS_ONLY} />
         </div>
       </section>

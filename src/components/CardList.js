@@ -6,6 +6,7 @@ const CardList = (props) => {
     <div>
       {props.cardsData.map((card) => (
         <Card
+          key={card.id}
           id={card.id}
           likesCount={card.likesCount}
           message={card.message}

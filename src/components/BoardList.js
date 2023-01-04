@@ -7,7 +7,7 @@ const BoardList = (props) => {
       <h2>All Boards</h2>
       <ul>
         {props.boardsData.map((board) => (
-          <Board id={board.id} title={board.title} />
+          <Board key={board.id} id={board.id} title={board.title} />
         ))}
       </ul>
     </>
