@@ -1,0 +1,9 @@
+.unselected-board {
+    background-color: red;
+    border: 2px solid yellow;
+}
+
+li:hover {
+    background-color: aquamarine;
+    cursor: pointer;
+} 

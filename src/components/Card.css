@@ -1,0 +1,12 @@
+.card {
+    border: 2px solid blue;
+    background-color: greenyellow;
+}
+
+.card-actions {
+    list-style-type: none;
+}
+
+.card-actions li {
+    display: inline-block;
+}
