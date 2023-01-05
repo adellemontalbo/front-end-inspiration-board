@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 import "./App.css";
 import CardList from "./components/CardList";
@@ -44,6 +45,7 @@ function App() {
     title: "test title",
     owner: "test owner",
     id: null,
+    cards: [],
   });
 
   const selectBoard = (board) => {
@@ -51,14 +53,16 @@ function App() {
   };
 
   const addBoardData = (newBoard) => {
-    const newBoardsList = [...boardsData];
-
-    newBoardsList.push({
-      titleData: newBoard.titleData,
-      ownerData: newBoard.ownerData,
-    });
-
-    setBoardsData(newBoardsList);
+    axios
+      .post(`${process.env.REACT_APP_BACKEND_URL}/boards`, newBoard)
+      .then((response) => {
+        const newBoardsList = [...boardsData];
+        newBoardsList.push(response);
+        setBoardsData(newBoardsList);
+      })
+      .catch((error) => {
+        console.log(("Error:", error));
+      });
   };
 
   return (
@@ -75,7 +79,7 @@ function App() {
         <h2>Add New Card</h2>
         {/* <CardForm /> */}
         <div className="cardDisplay">
-          <CardList cardsData={CARDS_ONLY} />
+          <CardList cardsData={currentBoard.cards} />
         </div>
       </section>
     </div>

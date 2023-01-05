@@ -7,13 +7,14 @@ const BoardList = ({ boardsData, onSelectBoard }) => {
     <>
       <h2>All Boards</h2>
       <ul>
-        {boardsData.map(({ id, title, owner }) => (
+        {boardsData.map(({ id, title, owner, cards }) => (
           <Board
             key={id}
             id={id}
             title={title}
             onSelectBoard={onSelectBoard}
             owner={owner}
+            cards={cards}
           />
         ))}
       </ul>

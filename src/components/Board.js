@@ -1,13 +1,10 @@
 import PropTypes from "prop-types";
 import "./Board.css";
 
-const Board = ({ id, title, owner, onSelectBoard }) => {
+const Board = ({ id, title, owner, cards, onSelectBoard }) => {
   // We were referring to board, but that doesn't exist
   return (
-    <li
-      onClick={() => onSelectBoard({ id, title, owner })}
-      className="unselected-board"
-    >
+    <li onClick={() => onSelectBoard({ id, title, owner, cards })} className="">
       {title}
     </li>
   );

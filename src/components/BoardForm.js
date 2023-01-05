@@ -25,8 +25,8 @@ const BoardForm = (props) => {
     event.preventDefault();
 
     props.addBoardData({
-      ownerData: formFields.owner,
-      titleData: formFields.title,
+      owner: formFields.owner,
+      title: formFields.title,
     });
 
     setFormFields({
