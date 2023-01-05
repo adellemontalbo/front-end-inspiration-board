@@ -36,7 +36,7 @@ const EXAMPLE_BOARD_2 = {
 
 const EXAMPLE_BOARD_LIST = [EXAMPLE_BOARD_1, EXAMPLE_BOARD_2];
 
-const CARDS_ONLY = EXAMPLE_BOARD_1.cards;
+// const CARDS_ONLY = EXAMPLE_BOARD_1.cards;
 
 // Should we change this to be an arrow function for consistency?
 function App() {
@@ -65,6 +65,8 @@ function App() {
       });
   };
 
+  // TODO: patch board data function
+
   return (
     <div className="App">
       <h1>Inspiration Board</h1>
@@ -77,9 +79,12 @@ function App() {
           {currentBoard.title} - {currentBoard.owner}
         </h2>
         <h2>Add New Card</h2>
-        {/* <CardForm /> */}
+        <CardForm currentBoard={currentBoard} />
         <div className="cardDisplay">
-          <CardList cardsData={currentBoard.cards} />
+          <CardList
+            cardsData={currentBoard.cards}
+            setBoardsData={setBoardsData}
+          />
         </div>
       </section>
     </div>

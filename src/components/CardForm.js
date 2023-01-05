@@ -1,20 +1,21 @@
 import { useState } from "react";
 
-const CardForm = (props) => {
-  const [messageData, setMessageData] = useState({message: "", likesCount: 0});
+const CardForm = ({ id, addCardData }) => {
+  const [messageData, setMessageData] = useState({
+    message: "",
+    likesCount: 0,
+  });
 
   const handleMessageChange = (event) => {
-    setMessageData({...messageData,
-      message: event.target.value,
-    });
+    setMessageData({ ...messageData, message: event.target.value });
   };
 
   // Change this once database is ready
   const onSubmitCard = (event) => {
     event.preventDefault();
 
-    props.addCardData({
-     message: messageData.message
+    addCardData({
+      message: messageData.message,
     });
 
     setMessageData({
