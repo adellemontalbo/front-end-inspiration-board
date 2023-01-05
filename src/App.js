@@ -37,20 +37,18 @@ const EXAMPLE_BOARD_LIST = [EXAMPLE_BOARD_1, EXAMPLE_BOARD_2];
 
 const CARDS_ONLY = EXAMPLE_BOARD_1.cards;
 
+// Should we change this to be an arrow function for consistency?
 function App() {
-
   const [boardsData, setBoardsData] = useState(EXAMPLE_BOARD_LIST);
   const [currentBoard, setCurrentBoard] = useState({
     title: "test title",
     owner: "test owner",
-    id: null
+    id: null,
   });
 
-  const selectBoard = (board) => { 
-    const newBoard = {title: board.title,
-    owner: board.owner, id:board.id};
-    setCurrentBoard(newBoard) };
-
+  const selectBoard = (board) => {
+    setCurrentBoard(board);
+  };
 
   const addBoardData = (newBoard) => {
     const newBoardsList = [...boardsData];
@@ -68,10 +66,12 @@ function App() {
       <h1>Inspiration Board</h1>
       <section className="sidebar">
         <BoardForm addBoardData={addBoardData} />
-        <BoardList boardsData={boardsData} onSelectBoard={selectBoard}/>
+        <BoardList boardsData={boardsData} onSelectBoard={selectBoard} />
       </section>
       <section>
-        <h2>{currentBoard.title}{currentBoard.owner}</h2>
+        <h2>
+          {currentBoard.title} - {currentBoard.owner}
+        </h2>
         <h2>Add New Card</h2>
         {/* <CardForm /> */}
         <div className="cardDisplay">
