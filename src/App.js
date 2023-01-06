@@ -1,52 +1,36 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import CardList from "./components/CardList";
 import BoardForm from "./components/BoardForm";
 import BoardList from "./components/BoardList";
 
-const EXAMPLE_CARD_1 = {
-  id: 1,
-  boardId: 1,
-  message: "test message 1",
-  likesCount: 0,
-};
-
-const EXAMPLE_CARD_2 = {
-  id: 2,
-  boardId: 1,
-  message: "test message 2",
-  likesCount: 0,
-};
-
-const EXAMPLE_BOARD_1 = {
-  id: 1,
-  title: "my first board",
-  owner: "jimbo",
-  cards: [EXAMPLE_CARD_1, EXAMPLE_CARD_2],
-};
-
-const EXAMPLE_BOARD_2 = {
-  id: 2,
-  title: "my second board",
-  owner: "jimbo",
-  cards: [],
-};
-
-const EXAMPLE_BOARD_LIST = [EXAMPLE_BOARD_1, EXAMPLE_BOARD_2];
-
-// const CARDS_ONLY = EXAMPLE_BOARD_1.cards;
-
 // Should we change this to be an arrow function for consistency?
 function App() {
   // boardsData useState([])?
-  const [boardsData, setBoardsData] = useState(EXAMPLE_BOARD_LIST);
+  const [boardsData, setBoardsData] = useState([]);
   const [currentBoard, setCurrentBoard] = useState({
     title: "test title",
     owner: "test owner",
-    id: null,
+    id: 1,
     cards: [],
   });
+
+  const effectHelper = () => {
+    axios
+      .get(`${process.env.REACT_APP_BACKEND_URL}/boards`)
+      .then((response) => {
+        setBoardsData(response.data.boards);
+        console.log({ message: "we're in useEffect" });
+      })
+      .catch((error) => {
+        console.log("Error:", error);
+      });
+  };
+
+  useEffect(() => {
+    effectHelper();
+  }, []);
 
   const selectBoard = (board) => {
     setCurrentBoard(board);
@@ -57,7 +41,7 @@ function App() {
       .post(`${process.env.REACT_APP_BACKEND_URL}/boards`, newBoard)
       .then((response) => {
         const newBoardsList = [...boardsData];
-        newBoardsList.push(response);
+        newBoardsList.push(response.data);
         setBoardsData(newBoardsList);
       })
       .catch((error) => {
@@ -74,9 +58,7 @@ function App() {
         <BoardForm addBoardData={addBoardData} />
         <BoardList boardsData={boardsData} onSelectBoard={selectBoard} />
       </section>
-      <div>
-        <CardList currentBoard={currentBoard} />
-      </div>
+      <CardList currentBoard={currentBoard} />
     </div>
   );
 }

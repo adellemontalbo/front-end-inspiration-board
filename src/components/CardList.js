@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import Card from "./Card";
 import CardForm from "./CardForm";
 import "./CardList.css";
@@ -9,14 +9,19 @@ const CardList = ({ currentBoard }) => {
   // current cards of current board
   const [cardsData, setCardsData] = useState([]);
 
-  // TO COMPLETE: We need to know what to put in our dependency array, board? cardsData?
+  const convertFromApi = (apiCard) => {
+    const { likes_count, ...rest } = apiCard;
+    const newCard = { likesCount: likes_count, ...rest };
+    return newCard;
+  };
+
   useEffect(() => {
     axios
       .get(
         `${process.env.REACT_APP_BACKEND_URL}/boards/${currentBoard.id}/cards`
       )
       .then((response) => {
-        setCardsData(response.cards);
+        setCardsData(response.data.cards);
       })
       .catch((error) => {
         console.log("Error:", error);
@@ -26,18 +31,41 @@ const CardList = ({ currentBoard }) => {
   const addCardData = (newCard) => {
     axios
       .post(
-        `${process.env.REACT_APP_BACKEND_URL}/boards/${currentBoard.id}`,
+        `${process.env.REACT_APP_BACKEND_URL}/boards/${currentBoard.id}/cards`,
         newCard
       )
       .then((response) => {
         const newCardsList = [...cardsData];
-        newCardsList.push(response);
+        const newCardConverted = convertFromApi(response.data);
+        newCardsList.push(newCardConverted);
+        console.log({ response });
         setCardsData(newCardsList);
       })
       .catch((error) => {
         console.log(("Error:", error));
       });
   };
+
+  const deleteCardData = (id) => {
+    axios
+      .delete(
+        `${process.env.REACT_APP_BACKEND_URL}/boards/${currentBoard.id}/cards/${id}`
+      )
+      .then((response) => {
+        const newCardsList = cardsData.filter((filterCard) => {
+          return filterCard.id !== id;
+        });
+        setCardsData(newCardsList);
+      })
+      .catch((error) => {
+        console.log(("Error:", error));
+      });
+  };
+
+  // update likes
+  // make an api call
+  // update card data
+  // cause re-render
 
   // rendering a card form and rendering the cards themselves
   return (
@@ -56,6 +84,7 @@ const CardList = ({ currentBoard }) => {
             id={card.id}
             likesCount={card.likesCount}
             message={card.message}
+            deleteCardData={deleteCardData}
           />
         ))}
       </div>

@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import "./Card.css";
 
-const Card = ({ id, message, likesCount }) => {
+const Card = ({ id, message, likesCount, deleteCardData }) => {
   return (
     <div className="card">
       <p className="card-message">{message}</p>
@@ -10,18 +10,19 @@ const Card = ({ id, message, likesCount }) => {
           <p>{likesCount} 🫀</p>
         </li>
         <li>+1</li>
-        <li>Delete</li>
-        {/* <li><p onClick={() => props.plusOneCardItem(card)}>+1</p></li> */}
-        {/* <li><p className='card-delete' onClick={() => props.deleteCardItem(props.card)}>Delete</p></li> */}
+        <li className="card-delete" onClick={() => deleteCardData(id)}>
+          Delete
+        </li>
+        {/* <li><p onClick={() => plusHeart(card)}>+1</p></li> */}
       </ul>
     </div>
   );
 };
 
-Card.propTypes = {
-  id: PropTypes.number.isRequired,
-  likesCount: PropTypes.number.isRequired,
-  message: PropTypes.string.isRequired,
-};
+// Card.propTypes = {
+//   id: PropTypes.number.isRequired,
+//   likesCount: PropTypes.number.isRequired,
+//   message: PropTypes.string.isRequired,
+// };
 
 export default Card;
