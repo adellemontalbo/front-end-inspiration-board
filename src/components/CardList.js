@@ -19,7 +19,7 @@ const CardList = ({ boardId }) => {
       .catch((error) => {
         console.log('Error:', error);
       });
-  }, []);
+  }, [boardId]);
 
   
   const addCardData = (newCard) => {
