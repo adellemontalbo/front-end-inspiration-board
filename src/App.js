@@ -2,7 +2,6 @@ import axios from "axios";
 import { useState } from "react";
 import "./App.css";
 import CardList from "./components/CardList";
-import CardForm from "./components/CardForm";
 import BoardForm from "./components/BoardForm";
 import BoardList from "./components/BoardList";
 
@@ -40,6 +39,7 @@ const EXAMPLE_BOARD_LIST = [EXAMPLE_BOARD_1, EXAMPLE_BOARD_2];
 
 // Should we change this to be an arrow function for consistency?
 function App() {
+  // boardsData useState([])?
   const [boardsData, setBoardsData] = useState(EXAMPLE_BOARD_LIST);
   const [currentBoard, setCurrentBoard] = useState({
     title: "test title",
@@ -65,7 +65,7 @@ function App() {
       });
   };
 
-  // TODO: patch board data function
+
 
   return (
     <div className="App">
@@ -79,11 +79,9 @@ function App() {
           {currentBoard.title} - {currentBoard.owner}
         </h2>
         <h2>Add New Card</h2>
-        <CardForm currentBoard={currentBoard} />
         <div className="cardDisplay">
           <CardList
-            cardsData={currentBoard.cards}
-            setBoardsData={setBoardsData}
+            boardId={currentBoard.id}
           />
         </div>
       </section>
