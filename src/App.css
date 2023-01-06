@@ -1,18 +1,23 @@
-/* .App {
-  text-align: center;
-  border: 2px solid red;
-} */
-
-
 .App {
-  border: 2px solid green;
-  background-color: #282c34;
+  background-color: #F5F5F5;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px; 
+  justify-items: stretch;
 }
 
+.heading {
+  grid-area: 1 / 1 / 2 / 3;
+  background-color: aquamarine;
+}
+
+.sidebar {
+  grid-area: 2 / 1 / 6 / 3;
+}
+
+/* .card-header {
+  color: red;
+} */

@@ -3,28 +3,32 @@ import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import Card from "./Card";
 import CardForm from "./CardForm";
+import "./CardList.css";
 
-
-const CardList = ({ boardId }) => {
+const CardList = ({ currentBoard }) => {
   // current cards of current board
   const [cardsData, setCardsData] = useState([]);
 
-
   // TO COMPLETE: We need to know what to put in our dependency array, board? cardsData?
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_BACKEND_URL}/boards/${boardId}/cards`)
+    axios
+      .get(
+        `${process.env.REACT_APP_BACKEND_URL}/boards/${currentBoard.id}/cards`
+      )
       .then((response) => {
-        setCardsData(response.cards)
+        setCardsData(response.cards);
       })
       .catch((error) => {
-        console.log('Error:', error);
+        console.log("Error:", error);
       });
-  }, [boardId]);
+  }, [currentBoard]);
 
-  
   const addCardData = (newCard) => {
     axios
-      .post(`${process.env.REACT_APP_BACKEND_URL}/boards/${boardId}`, newCard)
+      .post(
+        `${process.env.REACT_APP_BACKEND_URL}/boards/${currentBoard.id}`,
+        newCard
+      )
       .then((response) => {
         const newCardsList = [...cardsData];
         newCardsList.push(response);
@@ -35,15 +39,17 @@ const CardList = ({ boardId }) => {
       });
   };
 
-
-
-// rendering a card form and rendering the cards themselves
+  // rendering a card form and rendering the cards themselves
   return (
     <>
-      <div>
-        <CardForm addCardData={addCardData} boardId={boardId} />
+      <div className="card-header">
+        <h2>
+          {currentBoard.title} - {currentBoard.owner}
+        </h2>
+        <h2>Add New Card</h2>
+        <CardForm addCardData={addCardData} boardId={currentBoard.id} />
       </div>
-      <div>
+      <div className="cards-display">
         {cardsData.map((card) => (
           <Card
             key={card.id}
@@ -57,14 +63,14 @@ const CardList = ({ boardId }) => {
   );
 };
 
-CardList.propTypes = {
-  cardsData: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      likesCount: PropTypes.number.isRequired,
-      message: PropTypes.string.isRequired,
-    })
-  ),
-};
+// CardList.propTypes = {
+//   cardsData: PropTypes.arrayOf(
+//     PropTypes.shape({
+//       id: PropTypes.number.isRequired,
+//       likesCount: PropTypes.number.isRequired,
+//       message: PropTypes.string.isRequired,
+//     })
+//   ),
+// };
 
 export default CardList;

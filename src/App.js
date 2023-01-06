@@ -65,26 +65,18 @@ function App() {
       });
   };
 
-
-
   return (
     <div className="App">
-      <h1>Inspiration Board</h1>
+      <div className="heading">
+        <h1>Inspiration Board</h1>
+      </div>
       <section className="sidebar">
         <BoardForm addBoardData={addBoardData} />
         <BoardList boardsData={boardsData} onSelectBoard={selectBoard} />
       </section>
-      <section>
-        <h2>
-          {currentBoard.title} - {currentBoard.owner}
-        </h2>
-        <h2>Add New Card</h2>
-        <div className="cardDisplay">
-          <CardList
-            boardId={currentBoard.id}
-          />
-        </div>
-      </section>
+      <div>
+        <CardList currentBoard={currentBoard} />
+      </div>
     </div>
   );
 }
