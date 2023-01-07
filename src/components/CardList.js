@@ -61,10 +61,46 @@ const CardList = ({ currentBoard }) => {
       });
   };
 
-  // update likes
+  // FIXME:
+  const likeCard = (id) => {
+    // updateLikes;
+    axios
+      .patch(
+        `${process.env.REACT_APP_BACKEND_URL}/boards/${currentBoard.id}/cards/${id}`
+      )
+      .then((response) => {
+        console.log(response.data);
+        // const newCardsList = cardsData.filter((filterCard) => {
+        //   return filterCard.id !== id;
+        // });
+        // setCardsData(newCardsList);
+      })
+      .catch((error) => {
+        console.log(("Error:", error));
+      });
+  };
+
+  // const plusOneCardItem = (card) => {
+  //   axios.put(`${process.env.REACT_APP_BACKEND_URL}/cards/${card.card_id}/like`)
+  //     .then((response) => {
+  //     const newCardsData = cardsData.map((existingCard) => {
+  //       return existingCard.card_id !== card.card_id ? existingCard : {...card, likes_count: card.likes_count + 1}
+  //     });
+  //     setCardsData(newCardsData);})
+  //     .catch((error) => {
+  //     console.log('Error:', error);
+  //     alert('Couldn\'t +1 the card.');
+  //   });
+  // };
   // make an api call
   // update card data
   // cause re-render
+
+  //  TODO:
+  // const sortCards = (sortBy) => {
+  //   const newCardsData = cardsData.sort(sortBy);
+  //   setCardsData(newCardsData);
+  // };
 
   // rendering a card form and rendering the cards themselves
   return (
@@ -76,6 +112,7 @@ const CardList = ({ currentBoard }) => {
         <h2>Add New Card</h2>
         <CardForm addCardData={addCardData} boardId={currentBoard.id} />
       </div>
+      {/* TODO: Drop down filter will go here - sort by ID, alphabetically, and num of hearts*/}
       <div className="cards-display">
         {cardsData.map((card) => (
           <Card
@@ -84,6 +121,7 @@ const CardList = ({ currentBoard }) => {
             likesCount={card.likesCount}
             message={card.message}
             deleteCardData={deleteCardData}
+            likeCard={likeCard}
           />
         ))}
       </div>
