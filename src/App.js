@@ -21,7 +21,6 @@ function App() {
       .get(`${process.env.REACT_APP_BACKEND_URL}/boards`)
       .then((response) => {
         setBoardsData(response.data.boards);
-        console.log({ message: "we're in useEffect" });
       })
       .catch((error) => {
         console.log("Error:", error);

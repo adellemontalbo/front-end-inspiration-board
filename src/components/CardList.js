@@ -38,7 +38,6 @@ const CardList = ({ currentBoard }) => {
         const newCardsList = [...cardsData];
         const newCardConverted = convertFromApi(response.data);
         newCardsList.push(newCardConverted);
-        console.log({ response });
         setCardsData(newCardsList);
       })
       .catch((error) => {
