@@ -63,13 +63,18 @@ const CardList = ({ currentBoard }) => {
 
   // FIXME:
   const likeCard = (id) => {
-    // updateLikes;
+    // update likes on the front end
+    // make an api call
     axios
       .patch(
         `${process.env.REACT_APP_BACKEND_URL}/boards/${currentBoard.id}/cards/${id}`
+        // add request body with new likes data
       )
       .then((response) => {
+        // update card data
         console.log(response.data);
+        // use response to get new card info to make sure it's correct
+        // update state using response
         // const newCardsList = cardsData.filter((filterCard) => {
         //   return filterCard.id !== id;
         // });
@@ -79,21 +84,6 @@ const CardList = ({ currentBoard }) => {
         console.log(("Error:", error));
       });
   };
-
-  // const plusOneCardItem = (card) => {
-  //   axios.put(`${process.env.REACT_APP_BACKEND_URL}/cards/${card.card_id}/like`)
-  //     .then((response) => {
-  //     const newCardsData = cardsData.map((existingCard) => {
-  //       return existingCard.card_id !== card.card_id ? existingCard : {...card, likes_count: card.likes_count + 1}
-  //     });
-  //     setCardsData(newCardsData);})
-  //     .catch((error) => {
-  //     console.log('Error:', error);
-  //     alert('Couldn\'t +1 the card.');
-  //   });
-  // };
-  // make an api call
-  // update card data
   // cause re-render
 
   //  TODO:
