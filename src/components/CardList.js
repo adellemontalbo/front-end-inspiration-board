@@ -63,7 +63,8 @@ const CardList = ({ currentBoard }) => {
 
   // FIXME:
   const likeCard = (id) => {
-    // updateLikes;
+    // update likes on the front end
+    // make an api call
     axios
       .patch(
         `${process.env.REACT_APP_BACKEND_URL}/boards/${currentBoard.id}/cards/${id}`, {id}
