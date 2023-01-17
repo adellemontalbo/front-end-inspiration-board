@@ -66,35 +66,19 @@ const CardList = ({ currentBoard }) => {
     // updateLikes;
     axios
       .patch(
-        `${process.env.REACT_APP_BACKEND_URL}/boards/${currentBoard.id}/cards/${id}`
+        `${process.env.REACT_APP_BACKEND_URL}/boards/${currentBoard.id}/cards/${id}`, {id}
       )
       .then((response) => {
-        console.log(response.data);
-        // const newCardsList = cardsData.filter((filterCard) => {
-        //   return filterCard.id !== id;
-        // });
-        // setCardsData(newCardsList);
+        const newCardsData = cardsData.map((currentCard) => {
+        return currentCard.id !== response.data.id ? currentCard : {...currentCard, likesCount: response.data.likes_count}
+      });
+      setCardsData(newCardsData);
       })
       .catch((error) => {
         console.log(("Error:", error));
       });
   };
 
-  // const plusOneCardItem = (card) => {
-  //   axios.put(`${process.env.REACT_APP_BACKEND_URL}/cards/${card.card_id}/like`)
-  //     .then((response) => {
-  //     const newCardsData = cardsData.map((existingCard) => {
-  //       return existingCard.card_id !== card.card_id ? existingCard : {...card, likes_count: card.likes_count + 1}
-  //     });
-  //     setCardsData(newCardsData);})
-  //     .catch((error) => {
-  //     console.log('Error:', error);
-  //     alert('Couldn\'t +1 the card.');
-  //   });
-  // };
-  // make an api call
-  // update card data
-  // cause re-render
 
   //  TODO:
   // const sortCards = (sortBy) => {
