@@ -21,3 +21,8 @@
 /* .card-header {
   color: red;
 } */
+
+input:invalid {
+  background-color: #ffdddd;
+  border: 1px solid red;
+}

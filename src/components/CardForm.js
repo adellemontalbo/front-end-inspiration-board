@@ -27,13 +27,11 @@ const CardForm = ({ addCardData }) => {
         <label>Message</label>
         <input
           type="text"
+          required
           value={messageData.message}
           onChange={handleMessageChange}
-          className={
-            messageData.message.length === 0 || messageData.message.length > 40
-              ? "invalid-input"
-              : ""
-          }
+          maxlength="40"
+          minlength="1"
         ></input>
         <input type="submit" value="Submit" />
       </form>

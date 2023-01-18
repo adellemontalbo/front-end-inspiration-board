@@ -103,12 +103,13 @@ const CardList = ({ currentBoard }) => {
         </h2>
         <h2>Add New Card</h2>
         <CardForm addCardData={addCardData} boardId={currentBoard.id} />
+        <label for="sortcards">Sort by:</label>
+        <select name="sortcards" onChange={(e) => sortCards(e.target.value)}>
+          <option value="id">ID</option>
+          <option value="message">Alphabetically</option>
+          <option value="likes_count">Likes</option>
+        </select>
       </div>
-      <select onChange={(e) => sortCards(e.target.value)}>
-        <option value="id">ID</option>
-        <option value="message">Alphabetically</option>
-        <option value="likes_count">Likes</option>
-      </select>
       <div className="cards-display">
         {cardsData.map((card) => (
           <Card

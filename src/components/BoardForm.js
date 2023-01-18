@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./BoardForm.css";
 
 const BoardForm = (props) => {
   const [formFields, setFormFields] = useState({
@@ -42,17 +43,16 @@ const BoardForm = (props) => {
         <label>Title</label>
         <input
           type="text"
+          required
           value={formFields.title}
           onChange={handleTitleChange}
-          className={
-            formFields.title.length === 0 || formFields.title.length > 40
-              ? "invalid-input"
-              : ""
-          }
+          maxlength="40"
+          minlength="1"
         ></input>
         <label>Owner</label>
         <input
           type="text"
+          required
           value={formFields.owner}
           onChange={handleOwnerChange}
           className={
