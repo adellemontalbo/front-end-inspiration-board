@@ -85,23 +85,22 @@ const CardList = ({ currentBoard }) => {
   };
 
   //  TODO:
-  useEffect(() => {
-    const sortCards = (field) => {
-      const sortBy = {
-        id: "id",
-        message: "message",
-        likesCount: "likesCount",
-      };
-
-      const sortProperty = sortBy[field];
-      const sorted = [...cardsData].sort(
-        (a, b) => b[sortProperty] - a[sortProperty]
-      );
-      setCardsData(sorted);
+  // useEffect(() => {
+  const sortCards = (field) => {
+    const sortBy = {
+      id: "id",
+      message: "message",
+      likesCount: "likesCount",
     };
-    sortCards(sortType);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [sortType]);
+
+    const sortProperty = sortBy[field];
+    const sorted = [...cardsData].sort(
+      (a, b) => b[sortProperty] - a[sortProperty]
+    );
+    setCardsData(sorted);
+  };
+  sortCards(sortType);
+  // }, [sortType]);
 
   return (
     <>
