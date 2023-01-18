@@ -67,19 +67,21 @@ const CardList = ({ currentBoard }) => {
     // make an api call
     axios
       .patch(
-        `${process.env.REACT_APP_BACKEND_URL}/boards/${currentBoard.id}/cards/${id}`, {id}
+        `${process.env.REACT_APP_BACKEND_URL}/boards/${currentBoard.id}/cards/${id}`,
+        { id }
       )
       .then((response) => {
         const newCardsData = cardsData.map((currentCard) => {
-        return currentCard.id !== response.data.id ? currentCard : {...currentCard, likesCount: response.data.likes_count}
-      });
-      setCardsData(newCardsData);
+          return currentCard.id !== response.data.id
+            ? currentCard
+            : { ...currentCard, likesCount: response.data.likes_count };
+        });
+        setCardsData(newCardsData);
       })
       .catch((error) => {
         console.log(("Error:", error));
       });
   };
-
 
   //  TODO:
   // const sortCards = (sortBy) => {
@@ -98,6 +100,11 @@ const CardList = ({ currentBoard }) => {
         <CardForm addCardData={addCardData} boardId={currentBoard.id} />
       </div>
       {/* TODO: Drop down filter will go here - sort by ID, alphabetically, and num of hearts*/}
+      <select onChange={(e) => setSortType(e.target.value)}>
+        <option value="id">ID</option>
+        <option value="message">Alphabetically</option>
+        <option value="likesCount">Likes</option>
+      </select>
       <div className="cards-display">
         {cardsData.map((card) => (
           <Card
