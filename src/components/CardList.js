@@ -21,7 +21,7 @@ const CardList = ({ currentBoard }) => {
         `${process.env.REACT_APP_BACKEND_URL}/boards/${currentBoard.id}/cards`
       )
       .then((response) => {
-        setCardsData(response.data.cards);
+        setCardsData(response.data.cards.map(convertFromApi));
       })
       .catch((error) => {
         console.log("Error:", error);
