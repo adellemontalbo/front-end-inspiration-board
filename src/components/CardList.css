@@ -2,3 +2,7 @@
     grid-area: 1 / 3 / 2 / 7;
     background-color: blue;
 }
+
+.cards-display {
+    grid-area: 2 / 3 / 6 / 7;
+}
