@@ -46,8 +46,8 @@ const BoardForm = (props) => {
           required
           value={formFields.title}
           onChange={handleTitleChange}
-          maxlength="40"
-          minlength="1"
+          maxLength="40"
+          minLength="1"
         ></input>
         <label>Owner</label>
         <input

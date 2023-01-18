@@ -30,8 +30,8 @@ const CardForm = ({ addCardData }) => {
           required
           value={messageData.message}
           onChange={handleMessageChange}
-          maxlength="40"
-          minlength="1"
+          maxLength="40"
+          minLength="1"
         ></input>
         <input type="submit" value="Submit" />
       </form>
