@@ -61,10 +61,7 @@ const CardList = ({ currentBoard }) => {
       });
   };
 
-  // FIXME:
   const likeCard = (id) => {
-    // update likes on the front end
-    // make an api call
     axios
       .patch(
         `${process.env.REACT_APP_BACKEND_URL}/boards/${currentBoard.id}/cards/${id}`,
@@ -83,11 +80,19 @@ const CardList = ({ currentBoard }) => {
       });
   };
 
-  //  TODO:
-  // const sortCards = (sortBy) => {
-  //   const newCardsData = cardsData.sort(sortBy);
-  //   setCardsData(newCardsData);
-  // };
+  //  TODO: Test with backend
+  const sortCards = (sortBy) => {
+    axios
+      .get(
+        `${process.env.REACT_APP_BACKEND_URL}/boards/${currentBoard.id}/cards?sort=${sortBy}`
+      )
+      .then((response) => {
+        setCardsData(response.data.cards.map(convertFromApi));
+      })
+      .catch((error) => {
+        console.log("Error:", error);
+      });
+  };
 
   // rendering a card form and rendering the cards themselves
   return (
@@ -99,11 +104,10 @@ const CardList = ({ currentBoard }) => {
         <h2>Add New Card</h2>
         <CardForm addCardData={addCardData} boardId={currentBoard.id} />
       </div>
-      {/* TODO: Drop down filter will go here - sort by ID, alphabetically, and num of hearts*/}
-      <select onChange={(e) => setSortType(e.target.value)}>
+      <select onChange={(e) => sortCards(e.target.value)}>
         <option value="id">ID</option>
         <option value="message">Alphabetically</option>
-        <option value="likesCount">Likes</option>
+        <option value="likes_count">Likes</option>
       </select>
       <div className="cards-display">
         {cardsData.map((card) => (
