@@ -7,7 +7,7 @@ import BoardList from "./components/BoardList";
 
 // Should we change this to be an arrow function for consistency?
 function App() {
-  // boardsData useState([])?
+  const [showBoard, setShowBoard] = useState(true);
   const [boardsData, setBoardsData] = useState([]);
   const [currentBoard, setCurrentBoard] = useState({
     title: "test title",
@@ -54,7 +54,8 @@ function App() {
         <h1>Inspiration Board</h1>
       </div>
       <section className="sidebar">
-        <BoardForm addBoardData={addBoardData} />
+        { showBoard ? <BoardForm addBoardData={addBoardData}/> : null }
+        <button className="showboard" onClick={() => setShowBoard(showBoard => !showBoard)}>Unhide/Hide</button>
         <BoardList boardsData={boardsData} onSelectBoard={selectBoard} />
       </section>
       <CardList currentBoard={currentBoard} />
