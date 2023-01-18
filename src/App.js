@@ -54,8 +54,13 @@ function App() {
         <h1>Inspiration Board</h1>
       </div>
       <section className="sidebar">
-        { showBoard ? <BoardForm addBoardData={addBoardData}/> : null }
-        <button className="showboard" onClick={() => setShowBoard(showBoard => !showBoard)}>Unhide/Hide</button>
+        {showBoard ? <BoardForm addBoardData={addBoardData} /> : null}
+        <button
+          className="showboard"
+          onClick={() => setShowBoard((showBoard) => !showBoard)}
+        >
+          {showBoard ? "Hide" : "Show"}
+        </button>
         <BoardList boardsData={boardsData} onSelectBoard={selectBoard} />
       </section>
       <CardList currentBoard={currentBoard} />
