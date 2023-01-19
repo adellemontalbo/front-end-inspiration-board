@@ -6,6 +6,11 @@
     font-size: 36px;
 }
 
+.sort-by-label {
+    display: inline;
+    padding-right: 10px;
+}
+
 .cards-display {
     grid-area: 2 / 3 / 6 / 8;
     display: flex;

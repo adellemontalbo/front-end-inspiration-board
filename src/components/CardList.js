@@ -97,13 +97,17 @@ const CardList = ({ currentBoard }) => {
         <h2>
           {currentBoard.title} - {currentBoard.owner}
         </h2>
-        <CardForm addCardData={addCardData} boardId={currentBoard.id} />
-        <label htmlFor="sortcards">Sort by:</label>
-        <select name="sortcards" onChange={(e) => sortCards(e.target.value)}>
-          <option value="id">ID</option>
-          <option value="message">Alphabetically</option>
-          <option value="likes_count">Likes</option>
-        </select>
+        <div className="card-form">
+          <CardForm addCardData={addCardData} boardId={currentBoard.id} />
+          <label className="sort-by-label" htmlFor="sortcards">
+            Sort by:
+          </label>
+          <select name="sortcards" onChange={(e) => sortCards(e.target.value)}>
+            <option value="id">ID</option>
+            <option value="message">Alphabetically</option>
+            <option value="likes_count">Likes</option>
+          </select>
+        </div>
       </div>
       <div className="cards-display">
         {cardsData.map((card) => (

@@ -3,8 +3,18 @@ label {
     font-weight: bold;
 }
 
+select {
+    background-color: #340AFC;
+    padding: 2px 20px;
+    color: #f5f5f5;
+    font-family: 'Karla', sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 20px;
+}
+
 .card-field {
-    width: 70%;
+    width: 80%;
     padding: 6px 6px;
     margin: 8px 0;
     box-sizing: border-box;
@@ -28,4 +38,8 @@ label {
     border: 1px solid #D2FC0A;
     color: #340AFC;
     cursor: pointer;
+}
+
+.card-form {
+    margin-left: 20px;
 }
