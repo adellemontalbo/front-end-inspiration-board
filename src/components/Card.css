@@ -28,4 +28,7 @@
 
 .card-click:hover {
     cursor:pointer;
+    font-style: italic;
+    background-color: #340AFC;
+    color: #f0f0f0
 }

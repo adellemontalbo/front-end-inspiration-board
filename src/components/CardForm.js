@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./CardForm.css";
 
 const CardForm = ({ addCardData }) => {
   const [messageData, setMessageData] = useState({
@@ -32,8 +33,9 @@ const CardForm = ({ addCardData }) => {
           onChange={handleMessageChange}
           maxLength="40"
           minLength="1"
+          className="card-field"
         ></input>
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Submit" className="card-button" />
       </form>
     </>
   );

@@ -1,24 +1,29 @@
-.board-field {
-    width: 100%;
+label {
+    display: block;
+    font-weight: bold;
+}
+
+.card-field {
+    width: 70%;
     padding: 6px 6px;
     margin: 8px 0;
     box-sizing: border-box;
 }
 
-.board-button {
-    background: #bdb0ff;
-    border: 1px solid #5c48b1;
+.card-button {
+    background: #340AFC;
+    border: 1px solid #340AFC;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
     padding: 2px 20px;
-    color: #340AFC;
+    color: #f5f5f5;
     font-family: 'Karla', sans-serif;
     font-weight: bold;
     font-size: 16px;
-    margin-top: 10px;
+    margin-left: 10px;
 }
 
-.board-button:hover {
+.card-button:hover {
     background: #D2FC0A;
     border: 1px solid #D2FC0A;
     color: #340AFC;

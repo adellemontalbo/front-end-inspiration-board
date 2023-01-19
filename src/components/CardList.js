@@ -78,7 +78,6 @@ const CardList = ({ currentBoard }) => {
       });
   };
 
-
   const sortCards = (sortBy) => {
     axios
       .get(
@@ -121,6 +120,5 @@ const CardList = ({ currentBoard }) => {
     </>
   );
 };
-
 
 export default CardList;

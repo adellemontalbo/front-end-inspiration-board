@@ -1,6 +1,9 @@
 .card-header {
     grid-area: 1 / 3 / 2 / 8;
-    background-color: lightgoldenrodyellow;
+}
+
+.card-header h2 {
+    font-size: 36px;
 }
 
 .cards-display {
@@ -10,5 +13,5 @@
     align-items: flex-start;
     flex-wrap: wrap;
     align-content: space-around;
-    /* grid-template-rows: minmax(250px, 1fr) minmax(250px, 1fr) */
+    margin-top: 20px;
 }
