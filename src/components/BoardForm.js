@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./BoardForm.css";
 
-const BoardForm = (props) => {
+const BoardForm = ({ addBoardData }) => {
   const [formFields, setFormFields] = useState({
     title: "",
     owner: "",
@@ -24,7 +24,7 @@ const BoardForm = (props) => {
   const onSubmitBoard = (event) => {
     event.preventDefault();
 
-    props.addBoardData({
+    addBoardData({
       owner: formFields.owner,
       title: formFields.title,
     });
