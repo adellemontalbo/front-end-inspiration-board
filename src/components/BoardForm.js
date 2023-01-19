@@ -21,7 +21,6 @@ const BoardForm = (props) => {
     });
   };
 
-  // Change this once database is ready
   const onSubmitBoard = (event) => {
     event.preventDefault();
 

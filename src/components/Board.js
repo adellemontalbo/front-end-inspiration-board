@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import "./Board.css";
 
 const Board = ({ id, title, owner, cards, onSelectBoard, currentBoardId }) => {
@@ -13,11 +12,6 @@ const Board = ({ id, title, owner, cards, onSelectBoard, currentBoardId }) => {
       {title}
     </li>
   );
-};
-
-Board.propTypes = {
-  title: PropTypes.string.isRequired,
-  onSelectBoard: PropTypes.func.isRequired,
 };
 
 export default Board;

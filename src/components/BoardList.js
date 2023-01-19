@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import Board from "./Board";
 import "./BoardList.css";
 
@@ -23,14 +22,5 @@ const BoardList = ({ boardsData, onSelectBoard, currentBoard }) => {
   );
 };
 
-BoardList.propTypes = {
-  boardsData: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      title: PropTypes.string.isRequired,
-    })
-  ),
-  onSelectBoard: PropTypes.func.isRequired,
-};
 
 export default BoardList;

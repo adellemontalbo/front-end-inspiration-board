@@ -5,8 +5,7 @@ import CardList from "./components/CardList";
 import BoardForm from "./components/BoardForm";
 import BoardList from "./components/BoardList";
 
-// Should we change this to be an arrow function for consistency?
-function App() {
+const App = () => {
   const [showBoard, setShowBoard] = useState(true);
   const [boardsData, setBoardsData] = useState([]);
   const [currentBoard, setCurrentBoard] = useState({});

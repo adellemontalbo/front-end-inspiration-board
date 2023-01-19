@@ -1,12 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-// import PropTypes from "prop-types";
 import Card from "./Card";
 import CardForm from "./CardForm";
 import "./CardList.css";
 
 const CardList = ({ currentBoard }) => {
-  // current cards of current board
   const [cardsData, setCardsData] = useState([]);
 
   const convertFromApi = (apiCard) => {
@@ -80,7 +78,7 @@ const CardList = ({ currentBoard }) => {
       });
   };
 
-  //  TODO: Test with backend
+
   const sortCards = (sortBy) => {
     axios
       .get(
@@ -94,14 +92,12 @@ const CardList = ({ currentBoard }) => {
       });
   };
 
-  // rendering a card form and rendering the cards themselves
   return (
     <>
       <div className="card-header">
         <h2>
           {currentBoard.title} - {currentBoard.owner}
         </h2>
-        {/* <h2>Add New Card</h2> */}
         <CardForm addCardData={addCardData} boardId={currentBoard.id} />
         <label htmlFor="sortcards">Sort by:</label>
         <select name="sortcards" onChange={(e) => sortCards(e.target.value)}>
@@ -126,14 +122,5 @@ const CardList = ({ currentBoard }) => {
   );
 };
 
-// CardList.propTypes = {
-//   cardsData: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       id: PropTypes.number.isRequired,
-//       likesCount: PropTypes.number.isRequired,
-//       message: PropTypes.string.isRequired,
-//     })
-//   ),
-// };
 
 export default CardList;
