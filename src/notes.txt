@@ -35,3 +35,8 @@ const EXAMPLE_BOARD_LIST = [EXAMPLE_BOARD_1, EXAMPLE_BOARD_2];
 
 
 # TO WORK ON - how to keep the display of likes_count when we click away from it 
+
+## Fonts we're using:
+font-family: 'Baloo 2', cursive;
+font-family: 'Fira Code', monospace;
+font-family: 'Karla', sans-serif;

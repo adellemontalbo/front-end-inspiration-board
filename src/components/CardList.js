@@ -101,7 +101,7 @@ const CardList = ({ currentBoard }) => {
         <h2>
           {currentBoard.title} - {currentBoard.owner}
         </h2>
-        <h2>Add New Card</h2>
+        {/* <h2>Add New Card</h2> */}
         <CardForm addCardData={addCardData} boardId={currentBoard.id} />
         <label htmlFor="sortcards">Sort by:</label>
         <select name="sortcards" onChange={(e) => sortCards(e.target.value)}>

@@ -22,7 +22,7 @@ const CardForm = ({ addCardData }) => {
 
   return (
     <>
-      <h2>Create New Message</h2>
+      <h3>Add New Card</h3>
       <form onSubmit={onSubmitCard}>
         <label>Message</label>
         <input

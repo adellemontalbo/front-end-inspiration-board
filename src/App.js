@@ -9,12 +9,7 @@ import BoardList from "./components/BoardList";
 function App() {
   const [showBoard, setShowBoard] = useState(true);
   const [boardsData, setBoardsData] = useState([]);
-  const [currentBoard, setCurrentBoard] = useState({
-    title: "test title",
-    owner: "test owner",
-    id: 1,
-    cards: [],
-  });
+  const [currentBoard, setCurrentBoard] = useState({});
 
   const effectHelper = () => {
     axios
@@ -61,9 +56,15 @@ function App() {
         >
           {showBoard ? "Hide" : "Show"}
         </button>
-        <BoardList boardsData={boardsData} onSelectBoard={selectBoard} />
+        <BoardList
+          boardsData={boardsData}
+          onSelectBoard={selectBoard}
+          currentBoard={currentBoard}
+        />
       </section>
-      <CardList currentBoard={currentBoard} />
+      {Object.keys(currentBoard).length === 0 ? null : (
+        <CardList currentBoard={currentBoard} />
+      )}
     </div>
   );
 }

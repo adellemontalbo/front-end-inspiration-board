@@ -7,15 +7,14 @@
   grid-column-gap: 0px;
   grid-row-gap: 0px; 
   justify-items: stretch;
+  text-align: center;
 }
 
 .heading {
   grid-area: 1 / 1 / 2 / 3;
   background-color: aquamarine;
   font-family: 'Fira Code', monospace;
-  font-size: 24px;
-  /* line-height: 32px; */
-  text-align: center;
+  color: #340AFC
 }
 
 .sidebar {
@@ -28,4 +27,12 @@
 input:invalid {
   background-color: #ffdddd;
   border: 1px solid red;
+}
+
+h2 {
+  font-family: 'Fira Code', monospace;
+}
+
+h3 {
+  font-family: 'Fira Code', monospace;
 }

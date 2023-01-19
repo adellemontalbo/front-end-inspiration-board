@@ -1,12 +1,12 @@
 import PropTypes from "prop-types";
 import Board from "./Board";
-import "./Board.css";
+import "./BoardList.css";
 
-const BoardList = ({ boardsData, onSelectBoard }) => {
+const BoardList = ({ boardsData, onSelectBoard, currentBoard }) => {
   return (
     <>
       <h2>All Boards</h2>
-      <ul>
+      <ul className="board-list">
         {boardsData.map(({ id, title, owner, cards }) => (
           <Board
             key={id}
@@ -15,6 +15,7 @@ const BoardList = ({ boardsData, onSelectBoard }) => {
             onSelectBoard={onSelectBoard}
             owner={owner}
             cards={cards}
+            currentBoardId={currentBoard.id}
           />
         ))}
       </ul>

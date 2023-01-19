@@ -38,7 +38,7 @@ const BoardForm = (props) => {
 
   return (
     <>
-      <h2>Create New Board</h2>
+      <h3>Create New Board</h3>
       <form onSubmit={onSubmitBoard}>
         <label>Title</label>
         <input
