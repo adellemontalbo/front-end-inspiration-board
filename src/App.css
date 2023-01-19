@@ -6,7 +6,7 @@
   grid-column-gap: 0px;
   grid-row-gap: 0px; 
   justify-items: stretch;
-  /* text-align: center; */
+  min-height: 100vh;
 }
 
 .heading {

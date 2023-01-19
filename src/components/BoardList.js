@@ -4,7 +4,7 @@ import "./BoardList.css";
 const BoardList = ({ boardsData, onSelectBoard, currentBoard }) => {
   return (
     <>
-      <h2>All Boards</h2>
+      <h2 className="board-list-heading">All Boards</h2>
       <ul className="board-list">
         {boardsData.map(({ id, title, owner, cards }) => (
           <Board
@@ -21,6 +21,5 @@ const BoardList = ({ boardsData, onSelectBoard, currentBoard }) => {
     </>
   );
 };
-
 
 export default BoardList;
