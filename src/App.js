@@ -46,12 +46,13 @@ function App() {
   return (
     <div className="App">
       <div className="heading">
+        <h2>Team Serval's</h2>
         <h1>Inspiration Board</h1>
       </div>
       <section className="sidebar">
         {showBoard ? <BoardForm addBoardData={addBoardData} /> : null}
         <button
-          className="showboard"
+          className="board-button"
           onClick={() => setShowBoard((showBoard) => !showBoard)}
         >
           {showBoard ? "Hide" : "Show"}

@@ -48,6 +48,7 @@ const BoardForm = (props) => {
           onChange={handleTitleChange}
           maxLength="40"
           minLength="1"
+          className="board-field"
         ></input>
         <label>Owner</label>
         <input
@@ -55,13 +56,11 @@ const BoardForm = (props) => {
           required
           value={formFields.owner}
           onChange={handleOwnerChange}
-          className={
-            formFields.owner.length === 0 || formFields.owner.length > 40
-              ? "invalid-input"
-              : ""
-          }
+          maxLength="40"
+          minLength="1"
+          className="board-field"
         ></input>
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Submit" className="board-button" />
       </form>
     </>
   );

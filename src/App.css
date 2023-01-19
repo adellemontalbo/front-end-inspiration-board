@@ -2,7 +2,7 @@
   background-color: #F5F5F5;
   min-height: 100vh;
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(auto-fill, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px; 
@@ -12,9 +12,8 @@
 
 .heading {
   grid-area: 1 / 1 / 2 / 3;
-  background-color: aquamarine;
   font-family: 'Fira Code', monospace;
-  color: #340AFC
+  color: #340AFC;
 }
 
 .sidebar {
