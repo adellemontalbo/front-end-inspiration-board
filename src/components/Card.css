@@ -25,3 +25,7 @@
     display: block;
     margin-right: auto;
 }
+
+.card-click:hover {
+    cursor:pointer;
+}
